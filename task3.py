@@ -14,7 +14,7 @@
 
 def transform_string(number: int) -> str:
     """Возвращает строку вида 'N процентов' с учётом склонения по указанному number"""
-    # место для Вашего кода
+    # место для Вашего кода тут
     result = ''
     if str(number)[-1] == '1':
         result = str(number) + ' процент'
