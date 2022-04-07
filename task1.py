@@ -78,26 +78,38 @@ def naive_realisation(duration: int):
     # return total_time
     if duration >= 86400:
         days_amount = duration // 86400
-    else: days_amount = 0
+    else:
+        days_amount = 0
 
     rest_of_seconds = duration % 86400
 
     if rest_of_seconds >= 3600:
-        hours_amount = rest_of_seconds//3600
+        hours_amount = rest_of_seconds // 3600
 
-    else: hours_amount = 0
+    else:
+        hours_amount = 0
 
     rest_of_seconds = rest_of_seconds % 3600
 
     if rest_of_seconds >= 60:
         minutes_amount = rest_of_seconds // 60
-    else: minutes_amount = 0
+    else:
+        minutes_amount = 0
 
     rest_of_seconds = rest_of_seconds % 60
 
-    total_time = str(days_amount) +' дн ' + str(hours_amount) + \
-                             ' час ' + str(minutes_amount) + ' мин ' + str(rest_of_seconds) + ' сек '
+    if duration < 60:
+        total_time = str(rest_of_seconds) + ' сек '
+    elif duration < 3600:
+        total_time = str(minutes_amount) + ' мин ' + str(rest_of_seconds) + ' сек '
+    elif duration < 86400:
+        total_time = str(hours_amount) + \
+                     ' час ' + str(minutes_amount) + ' мин ' + str(rest_of_seconds) + ' сек '
+    else:
+        total_time = str(days_amount) + ' дн ' + str(hours_amount) + \
+                     ' час ' + str(minutes_amount) + ' мин ' + str(rest_of_seconds) + ' сек '
     return total_time
+
 
 def one_cycle_realisation(duration):
     total_time = ''
@@ -125,12 +137,20 @@ def one_cycle_realisation(duration):
                     days += 1
                     hours -= 24
 
-    total_time = str(days) + ' дн ' + str(hours) + \
-                 ' час ' + str(minutes) + ' мин ' + str(seconds) + ' сек '
+    if duration < 60:
+        total_time = str(seconds) + ' сек '
+    elif duration < 3600:
+        total_time = str(minutes) + ' мин ' + str(seconds) + ' сек '
+    elif duration < 86400:
+        total_time = str(hours) + \
+                     ' час ' + str(minutes) + ' мин ' + str(seconds) + ' сек '
+    else:
+        total_time = str(days) + ' дн ' + str(hours) + \
+                     ' час ' + str(minutes) + ' мин ' + str(seconds) + ' сек '
     return total_time
 
 
 if __name__ == '__main__':
-    duration = 628
+    duration = 2
     print(naive_realisation(duration))
     print(one_cycle_realisation(duration))
