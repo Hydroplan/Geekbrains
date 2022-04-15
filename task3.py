@@ -14,8 +14,16 @@
 
 def transform_string(number: int) -> str:
     """Возвращает строку вида 'N процентов' с учётом склонения по указанному number"""
-    # место для Вашего кода
-    return 'верните отформатированную строку'
+    # место для Вашего кода тут
+    result = ''
+    if number in (11,12,13,14,15,16,17,18,19):
+        result = str(number) + ' процентов'
+    elif str(number)[-1] == '1':
+        result = str(number) + ' процент'
+    elif str(number)[-1] == '2' or str(number)[-1] =='3' or str(number)[-1] =='4':
+        result = str(number) + ' процента'
+    else: result = str(number) + ' процентов'
+    return result
 
 if __name__ == '__main__':
     for n in range(1, 101):  # по заданию учитываем только значения от 1 до 100

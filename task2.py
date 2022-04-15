@@ -14,19 +14,56 @@
 
 def sum_list_1(dataset: list) -> int:
     """Вычисляет сумму чисел списка dataset, сумма цифр которых делится нацело на 7"""
-    # место для написания кода
-    return 1  # Верните значение полученной суммы
+    # место для написания кода тут
+
+
+    # объявляем новые переменные
+    sum_of_digit = 0
+    total_sum = 0
+
+    for number in my_list:
+        remember_number = number
+        while number >= 1:
+            sum_of_digit += number % 10
+            number = number // 10
+
+        if sum_of_digit % 7 == 0:  # если сумма цифр делится на 7 без остатка, то добавляем число к общей сумме
+            total_sum += remember_number
+
+        sum_of_digit = 0  # обнуляем переменную для нового расчета следующего числа
+    return total_sum  # Верните значение полученной суммы
 
 
 def sum_list_2(dataset: list) -> int:
-    """К каждому элементу списка добавляет 17 и вычисляет сумму чисел списка, 
+    """К каждому элементу списка добавляет 17 и вычисляет сумму чисел списка,
         сумма цифр которых делится нацело на 7"""
     # место для написания кода
-    return 1  # Верните значение полученной суммы
+
+    sum_of_digit = 0
+
+    total_sum = 0
+
+    for number in my_list:
+        number += 17
+        remember_number = number
+        while number >= 1:
+            sum_of_digit += number % 10
+            number = number // 10
+
+        if sum_of_digit % 7 == 0:  # если сумма цифр делится на 7 без остатка, то добавляем число к общей сумме
+            total_sum += remember_number
+
+        sum_of_digit = 0  # обнуляем переменную для нового расчета следующего числа
+    return total_sum  # Верните значение полученной суммы
 
 
 if __name__ == '__main__':
+
     my_list = []  # Соберите нужный список по заданию
+    for i in range(1, 1000):
+        if i % 2 == 1:
+            my_list.append(pow(i, 3))
+    print(my_list)
     result_1 = sum_list_1(my_list)
     print(result_1)
     result_2 = sum_list_2(my_list)
